@@ -44,7 +44,7 @@ class Livro(Base):
     nome = models.CharField('Nome', max_length=100)
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE, default='Desconhecido')
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, default='Geral')
-    status = models.CharField('Status', default='Disponível', max_length=12, choices=STATUS_CHOICE)
+    status = models.BooleanField('Status', default=True, max_length=12, choices=STATUS_CHOICE)
 
     class Meta:
         verbose_name = 'Livro'
@@ -63,7 +63,7 @@ class Leitor(Base):
     nome = models.CharField('Nome', max_length=50)
     telefone = models.CharField('Telefone', max_length=13)
     email = models.EmailField('Email', max_length=50)
-    status = models.CharField('Status', default='Desbloqueado', max_length=12, choices=STATUS_CHOICE)
+    status = models.BooleanField('Status', default=True, max_length=12, choices=STATUS_CHOICE)
 
     class Meta:
         verbose_name = 'Leitor'
@@ -81,11 +81,11 @@ class Emprestimo(Base):
 
     leitor = models.ForeignKey(Leitor, on_delete=models.CASCADE)
     livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
-    status = models.CharField('Status', default='Em andamento', max_length=12, choices=STATUS_CHOICE)
+    status = models.BooleanField('Status', default=True, max_length=12, choices=STATUS_CHOICE)
 
     class Meta:
-        verbose_name = 'Emprestimo'
-        verbose_name_plural = 'Emprestimos'
+        verbose_name = 'Empréstimo'
+        verbose_name_plural = 'Empréstimos'
 
     def __str__(self):
         return f'{self.leitor} | {self.livro}'
