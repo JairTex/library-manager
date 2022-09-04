@@ -1,7 +1,4 @@
 from django.db import models
-from django.db.models import signals
-from django.template.defaultfilters import slugify
-from stdimage.models import StdImageField
 
 #Todas as classes vão herdar a classe base
 class Base(models.Model):
@@ -24,16 +21,6 @@ class Categoria(Base):
         return self.nome 
 
 
-class Autor(Base):
-    nome = models.CharField('Nome', max_length = 100)
-
-    class Meta:
-        verbose_name = 'Autor'
-        verbose_name_plural = 'Autores'
-
-    def __str__(self):
-        return self.nome 
-
 class Livro(Base):
     STATUS_CHOICE = (
         (True, 'Disponível'),
@@ -42,7 +29,7 @@ class Livro(Base):
 
     codigo = models.CharField('Codigo', max_length=15, unique=True)
     nome = models.CharField('Nome', max_length=100)
-    autor = models.ForeignKey(Autor, on_delete=models.CASCADE, default='Desconhecido')
+    autor = models.CharField('Autor', max_length=100, default='Desconhecido')
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, default='Geral')
     status = models.BooleanField('Status', default=True, max_length=12, choices=STATUS_CHOICE)
 

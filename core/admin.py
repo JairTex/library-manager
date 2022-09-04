@@ -1,10 +1,6 @@
 from django.contrib import admin
-from core.models import Autor, Categoria, Leitor, Livro, Emprestimo
+from core.models import Categoria, Leitor, Livro, Emprestimo
 
-#Para a tabela do Model aparecer no /admin
-@admin.register(Autor)
-class AutorAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'criado', 'modificado', 'ativo')
 
 @admin.register(Categoria)
 class CategoriaAdmin(admin.ModelAdmin):
