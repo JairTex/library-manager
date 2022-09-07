@@ -63,6 +63,6 @@ class EmprestimoListView(TemplateView):
 
 class EmprestimoCreateView(CreateView):
     model = Emprestimo
-    fields = ['leitor', 'livro']
+    fields = ['leitor', 'livro', 'devolucao']
     template_name = 'emprestimo.html'
     success_url = '/emprestimo-list/'

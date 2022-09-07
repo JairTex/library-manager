@@ -33,7 +33,7 @@ class LivroModelForm(forms.ModelForm):
 class EmprestimoModelForm(forms.ModelForm):
     class Meta:
         model = Emprestimo
-        fields = ('leitor', 'livro')
+        fields = ('leitor', 'livro', 'devolucao',)
     widgets = {
         'leitor' : forms.TextInput(attrs = {'class' : 'form-label'}), 
         'livro' : forms.TextInput(attrs = {'class' : 'form-label'}),

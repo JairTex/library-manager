@@ -48,7 +48,7 @@ class Leitor(Base):
     )
 
     nome = models.CharField('Nome', max_length=50)
-    telefone = models.CharField('Telefone', max_length=13)
+    telefone = models.CharField('Telefone', max_length=13, help_text="Por favor use o seguinte formato: <em>XX XXXXX-XXXX</em>.")
     email = models.EmailField('Email', max_length=50)
     status = models.BooleanField('Status', default=True, max_length=12, choices=STATUS_CHOICE)
 
@@ -68,6 +68,7 @@ class Emprestimo(Base):
 
     leitor = models.ForeignKey(Leitor, on_delete=models.CASCADE)
     livro = models.ForeignKey(Livro, on_delete=models.CASCADE)
+    devolucao = models.DateField('Data de devolução', help_text="Selecione uma data posterior a atual")
     status = models.BooleanField('Status', default=True, max_length=12, choices=STATUS_CHOICE)
 
     class Meta:

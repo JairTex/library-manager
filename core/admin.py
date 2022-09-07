@@ -16,4 +16,4 @@ class LivroAdmin(admin.ModelAdmin):
 
 @admin.register(Emprestimo)
 class AutorAdmin(admin.ModelAdmin):
-    list_display = ('leitor', 'livro', 'status', 'criado', 'modificado', 'ativo')
+    list_display = ('leitor', 'livro', 'devolucao', 'status', 'criado', 'modificado', 'ativo')
